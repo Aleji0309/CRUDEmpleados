@@ -1,4 +1,8 @@
-<?php include 'db.php' ?> 
+<?php 
+include 'db.php';
+include 'script.php';
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +25,12 @@
             <th>Baja</th>
             <th>Status</th>
         </tr>
+
+        
+
+        <?= mostrarEmpleadosHTML($conexion) ?> <!-- Llamar a la función -->
     </table>
+
+    <button>Mostrar Registros</button>
 </body>
 </html>
