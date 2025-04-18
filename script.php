@@ -1,32 +1,48 @@
 <?php 
-    include 'db.php';
+include 'db.php';
+?>
 
-    // Funcion para mostrar  los registros
-    function mostrarEmpleadosHTML($conexion){
-        $sql = "SELECT * FROM empleados";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-        $resultado = $conexion -> query($sql);
-        $html = "";
+    <?php   
+        if(isset( $_POST["guardar"])){
+               //isset verifica si una variable está definida y no es null
 
-        // Recorrer el objeti con un ciclo
-        while($fila = $resultado-> fetch_assoc()){ // Devuelve arreglo asociativo y retorba falso cuando no hay más elementos
-            $html .= "<tr>";
-            $html .= "<td>" .$fila['id_empleado'] ."</td>";
-            $html .= "<td>" .$fila['clave_empleado'] ."</td>";
-            $html .= "<td>" .$fila['nombre_emp'] ."</td>";
-            $html .= "<td>" .$fila['a_materno'] ."</td>";
-            $html .= "<td>" .$fila['a_paterno'] ."</td>";
-            $html .= "<td>" .$fila['id_puesto'] ."</td>";
-            $html .= "<td>" .$fila['fecha_ingreso'] ."</td>";
-            $html .= "<td>" .$fila['fecha_baja'] ."</td>";
-            $html .= "<td>" .$fila['status'] ."</td>";
+                // Recuperar los valores del formulario y guardarlos en variables
+                $claveEmpleado = $_POST['clave_empleado'];
+                $nombreEmpleado = $_POST['nombre_emp'];
+                $apellidoPaterno = $_POST['a_paterno'];
+                $apellidoMaterno = $_POST['a_materno'];
+                $idPuesto = $_POST['id_puesto'];
+                $fechaIngreso = $_POST['fecha_ingreso']; 
+                $fechaBaja = $_POST['fecha_baja'];
+                $status = $_POST['status'];
+
         }
 
-        return $html;
+        $sql = "INSERT INTO empleados (clave_empleado,nombre_emp,a_paterno,a_materno,id_puesto,fecha_ingreso,fecha_baja,status)
+        VALUES('$claveEmpleado','$nombreEmpleado','$apellidoPaterno','$apellidoMaterno','$idPuesto','$fechaIngreso','$fechaBaja','$status')";
+        
+   
+        $resultado = $conexion -> query($sql);
 
-    }
+        if($resultado) {
+            echo "consulta exitosa";
+        }else {
+            echo "consulta fallida";
+        }
 
+        
 
     
-
-?>
+    ?>
+    
+</body>
+</html>
