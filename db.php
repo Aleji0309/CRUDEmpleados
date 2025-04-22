@@ -12,8 +12,10 @@
 
     // Mensaje de error si la conexi+pn falla
     if($conexion->connect_error){
-        echo "Error al conectar base de datos: " , $conexion -> connect_error ;
+        //echo "Error al conectar base de datos: " , $conexion -> connect_error ;
     } else {
-        echo "Conexión Exitosa";
+        //echo "Conexión Exitosa";
     }
+
+    
 ?>
