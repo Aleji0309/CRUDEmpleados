@@ -87,6 +87,33 @@
 
      }
 
+     function update($conexion){
+        if(true){
+            $sql = "UPDATE empleados 
+                    SET clave_empleado = 30303030,
+                        nombre_emp = 'Julio',
+                        a_paterno  = 'Dormond',
+                        a_materno  = 'Dormond',
+                        id_puesto  = 8,
+                        fecha_ingreso = '2022-04-08',
+                        fecha_baja = '2026-04-08',
+                        status = 0
+                    WHERE id_empleado = 32";        
+        }
+        $resultado = $conexion->query($sql);
+     }
+
+     function delete($conexion){
+        if(true){
+            $sql = "DELETE FROM empleados
+                WHERE id_empleado = 30";
+        }
+        $resultado = $conexion->query($sql);
+
+     }
+
+    //update($conexion);
+    delete($conexion);
     read($conexion);
      //create($conexion);
 ?>
