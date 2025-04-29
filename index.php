@@ -14,7 +14,9 @@
     <button id="btn-actualizar">Actualizar Empleado</button>
     <button id="btn-eliminar">Eliminar Empleado</button>
 
-    <div id="resultado"></div>
+    <div id="resultado">
+        
+    </div>
 
   
     <script src="app.js"></script>

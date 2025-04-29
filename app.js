@@ -1,21 +1,30 @@
 // Declarar las variables
 const btnMostrar = document.getElementById("btn-mostrar");
+const divMostrar = document.getElementById("resultado");
+
 
 // Event Listeners
 btnMostrar.addEventListener("click", () => {
-  console.log("test");
-  fetch("mensaje.txt")
-    .then((response) => response.text())
-    .then((texto) => {
-      console.log(texto);
-      document.body.innerHTML += `<p>${texto}</p>`;
-    });
 
     fetch('script.php')
-    .then((resultado) => resultado.text())
-    .then((data) => console.log(data))
+    .then((resultado) => resultado.json())
+    .then((data) =>  data.forEach(element => {
 
-//   fetch("http://example.com/movies.json")
-//     .then((response) => response.json())
-//     .then((data) => console.log(data));
+        
+    document.getElementById('resultado').innerHTML = `
+
+    <table border="2">
+    <tbody>
+    <tr><td>celda en la hilera 0, columna 0</td>
+        <td>celda en la hilera 0, columna 1</td>
+    </tr>
+    </tbody>
+    </table>
+
+    ` 
+
+;
+       
+    }));  
+
 });

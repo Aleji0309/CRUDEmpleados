@@ -2,6 +2,28 @@
 <?php 
 
     include 'db.php';    
+
+    
+    function read($conexion){ // Función para leer los valores a la base de datos 
+
+        if(true){
+            $sql = "SELECT *  FROM empleados";
+        }
+
+        $resultado = $conexion->query($sql);
+
+        // Crear arreglo vacio para luego llenarlo
+        $empleados = [];
+
+        // Agrega los datos al arreglo vacio 
+        while ($fila = $resultado->fetch_assoc()) {
+            $empleados[] = $fila;
+          
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($empleados);
+     }
     
     function create($conexion) { // Función para insertar nuevos valores a la base de datos 
 
@@ -32,28 +54,6 @@
         }
     }
 
-     function read($conexion){ // Función para leer los valores a la base de datos 
-
-        if(true){
-            $sql = "SELECT *  FROM empleados";
-        }
-
-        $resultado = $conexion->query($sql);
-
-        // Crear arreglo vacio para luego llenarlo
-        $empleados = [];
-
-        // Agrega los datos al arreglo vacio 
-        while ($fila = $resultado->fetch_assoc()) {
-            $empleados[] = $fila;
-          
-        }
-
-        header('Content-Type: application/json');
-        echo json_encode($empleados);
-     
-
-     }
 
      function update($conexion) { // Función para acutalizar los datos de un empleado
         if (isset($_POST['id_empleado'])) {
