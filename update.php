@@ -9,9 +9,12 @@
 </head>
 <body>
 
-    <h1>Registro de Empleados</h1>
+    <h1>Actualización de Empleados</h1>
 
     <form action="script.php" method="POST" >
+
+        <label for="">Id del Empleado a modificar</label>
+        <input type="number" name="id_empleado"><br>
 
         <label for="clave empleado">Clave Empleado</label>
         <input type="number" name="clave_empleado"><br>
@@ -37,10 +40,9 @@
         <label for="estado">Status</label>
         <input type="text" name="status"><br>
 
-        <button type="submit" name="guardar" >Guardar</button>
+        <button type="submit" name="actualizar" >Actualizar</button>
 
     </form>
     
 </body>
 </html>
-

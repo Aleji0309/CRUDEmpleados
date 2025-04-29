@@ -1,33 +1,23 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Empleados</title>
+    <title>CRUD Empleados</title>
 </head>
 <body>
-    <h1>Empleados Registrados</h1>
 
-    <table border='1' cellpadding = "10" >
-        <tr>
-            <th>ID</th>
-            <th>Clave</th>
-            <th>Nombre</th>
-            <th>Apellido Materno</th>
-            <th>Apellido Paterno</th>
-            <th>Puesto</th>
-            <th>Ingreso</th>
-            <th>Baja</th>
-            <th>Status</th>
-        </tr>
+    <h1>CRUD de Empleados</h1>
 
-        
+    <!-- Botones para cada acción -->
+    <button id="btn-mostrar">Mostrar Empleados</button>
+    <button id="btn-agregar">Agregar Empleado</button>
+    <button id="btn-actualizar">Actualizar Empleado</button>
+    <button id="btn-eliminar">Eliminar Empleado</button>
 
-        
-    </table>
+    <div id="resultado"></div>
 
-    <button>Mostrar Registros</button>
+  
+    <script src="app.js"></script>
+
 </body>
 </html>

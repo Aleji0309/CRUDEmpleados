@@ -3,50 +3,36 @@
 
     include 'db.php';    
     
-    function create($conexion){
+    function create($conexion) { // Función para insertar nuevos valores a la base de datos 
 
-        if(true) {
-        //if(isset( $_POST['clave_empleado']) and isset(($_POST['nombre_emp']))  and isset(($_POST['a_paterno'])) ){
-            //isset verifica si una variable está definida y no es null
-
-             // Recuperar los valores del formulario y guardarlos en variables
-            //  $claveEmpleado = $_POST['clave_empleado'];
-            //  $nombreEmpleado = $_POST['nombre_emp'];
-            //  $apellidoPaterno = $_POST['a_paterno'];
-            //  $apellidoMaterno = $_POST['a_materno'];
-            //  $idPuesto = $_POST['id_puesto'];
-            //  $fechaIngreso = $_POST['fecha_ingreso']; 
-            //  $fechaBaja = $_POST['fecha_baja'];
-            //  $status = $_POST['status'];
-
-             $claveEmpleado = '333333333';
-             $nombreEmpleado = 'Joana';
-             $apellidoPaterno = 'Gonzales';
-             $apellidoMaterno = 'Ramirez';
-             $idPuesto = 10;
-             $fechaIngreso = '2024-04-08'; 
-             $fechaBaja = '2025-04-08'; 
-             $status = 1;
-
-
-             $sql = "INSERT INTO empleados (clave_empleado,nombre_emp,a_paterno,a_materno,id_puesto,fecha_ingreso,fecha_baja,status)
-                     VALUES('$claveEmpleado','$nombreEmpleado','$apellidoPaterno','$apellidoMaterno','$idPuesto','$fechaIngreso','$fechaBaja','$status')";
-
-                     
+        if (isset($_POST['clave_empleado']) && isset($_POST['nombre_emp']) && isset($_POST['a_paterno']) 
+            && isset($_POST['a_materno']) && isset($_POST['id_puesto']) && isset($_POST['fecha_ingreso']) 
+            && isset($_POST['fecha_baja']) && isset($_POST['status'])) {
+    
+            // Recuperar los valores del formulario
+            $claveEmpleado = $_POST['clave_empleado'];
+            $nombreEmpleado = $_POST['nombre_emp'];
+            $apellidoPaterno = $_POST['a_paterno'];
+            $apellidoMaterno = $_POST['a_materno'];
+            $idPuesto = $_POST['id_puesto'];
+            $fechaIngreso = $_POST['fecha_ingreso']; 
+            $fechaBaja = $_POST['fecha_baja'];
+            $status = $_POST['status'];
+    
+            $sql = "INSERT INTO empleados (clave_empleado, nombre_emp, a_paterno, a_materno, id_puesto, fecha_ingreso, fecha_baja, status)
+                    VALUES ('$claveEmpleado', '$nombreEmpleado', '$apellidoPaterno', '$apellidoMaterno', '$idPuesto', '$fechaIngreso', '$fechaBaja', '$status')";
+    
             $resultado = $conexion->query($sql);
-
-            if($resultado) {
-                echo "consulta exitosa";
-            }else {
-                echo "consulta fallida";
+    
+            if ($resultado) {
+                echo "Consulta exitosa.";
+            } else {
+                echo "Consulta fallida: " . $conexion->error;
             }
         }
+    }
 
-     } 
-    
-    
-
-     function read($conexion){
+     function read($conexion){ // Función para leer los valores a la base de datos 
 
         if(true){
             $sql = "SELECT *  FROM empleados";
@@ -54,67 +40,80 @@
 
         $resultado = $conexion->query($sql);
 
-        // Imprimie la información de los titulos
-        echo "<pre>";  
-        echo str_pad("ID", 5);
-        echo str_pad("Clave", 10);
-        echo str_pad("Nombre", 15);
-        echo str_pad("A. Paterno", 15);
-        echo str_pad("A. Materno", 15);
-        echo str_pad("Puesto", 10);
-        echo str_pad("Ingreso", 12);
-        echo str_pad("Baja", 12);
-        echo str_pad("Status", 8);
-        echo "\n";
-        echo str_repeat("-", 100) . "\n"; // línea separadora
+        // Crear arreglo vacio para luego llenarlo
+        $empleados = [];
 
-        // Imprime la información de la base de datos
-        echo "<pre>"; 
+        // Agrega los datos al arreglo vacio 
         while ($fila = $resultado->fetch_assoc()) {
-            echo str_pad($fila['id_empleado'], 5);
-            echo str_pad($fila['clave_empleado'], 10);
-            echo str_pad($fila['nombre_emp'], 15);
-            echo str_pad($fila['a_paterno'], 15);
-            echo str_pad($fila['a_materno'], 15);
-            echo str_pad($fila['id_puesto'], 10);
-            echo str_pad($fila['fecha_ingreso'], 12);
-            echo str_pad($fila['fecha_baja'], 12);
-            echo str_pad($fila['status'], 8);
-            echo "\n";
+            $empleados[] = $fila;
+          
         }
 
-        echo "</pre>";
+        header('Content-Type: application/json');
+        echo json_encode($empleados);
+     
 
      }
 
-     function update($conexion){
-        if(true){
+     function update($conexion) { // Función para acutalizar los datos de un empleado
+        if (isset($_POST['id_empleado'])) {
+    
+            // Primero recuperamos los datos del formulario
+            $idEmpleado = $_POST['id_empleado'];
+            $claveEmpleado = $_POST['clave_empleado'];
+            $nombreEmpleado = $_POST['nombre_emp'];
+            $apellidoPaterno = $_POST['a_paterno'];
+            $apellidoMaterno = $_POST['a_materno'];
+            $idPuesto = $_POST['id_puesto'];
+            $fechaIngreso = $_POST['fecha_ingreso'];
+            $fechaBaja = $_POST['fecha_baja'];
+            $status = $_POST['status'];
+    
+            // Ahora hacemos la consulta
             $sql = "UPDATE empleados 
-                    SET clave_empleado = 30303030,
-                        nombre_emp = 'Julio',
-                        a_paterno  = 'Dormond',
-                        a_materno  = 'Dormond',
-                        id_puesto  = 8,
-                        fecha_ingreso = '2022-04-08',
-                        fecha_baja = '2026-04-08',
-                        status = 0
-                    WHERE id_empleado = 32";        
+                    SET clave_empleado = '$claveEmpleado',
+                        nombre_emp = '$nombreEmpleado',
+                        a_paterno = '$apellidoPaterno',
+                        a_materno = '$apellidoMaterno',
+                        id_puesto = '$idPuesto',
+                        fecha_ingreso = '$fechaIngreso',
+                        fecha_baja = '$fechaBaja',
+                        status = '$status'
+                    WHERE id_empleado = '$idEmpleado'";
+    
+            $resultado = $conexion->query($sql);
+    
+            if ($resultado) {
+                echo "Registro eliminar correctamente.";
+            } else {
+                echo "Error al elminar: " . $conexion->error;
+            }
         }
-        $resultado = $conexion->query($sql);
-     }
+    }
+    
 
-     function delete($conexion){
-        if(true){
+     function delete($conexion){ // Función para eliminar un registro
+        if(isset($_POST['id_empleado'])){
+            $idEmpleado = $_POST['id_empleado'];
+
+            // Consultar para eliminar registros
             $sql = "DELETE FROM empleados
-                WHERE id_empleado = 30";
-        }
-        $resultado = $conexion->query($sql);
+                WHERE id_empleado = '$idEmpleado'";
+                 $resultado = $conexion->query($sql);
 
+                 if ($resultado) {
+                     echo "Registro actualizado correctamente.";
+                 } else {
+                     echo "Error al actualizar: " . $conexion->error;
+                 }
+         
+        }
+       
      }
 
     //update($conexion);
     delete($conexion);
     read($conexion);
-     //create($conexion);
+    //create($conexion);
 ?>
     
