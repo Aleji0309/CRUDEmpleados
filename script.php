@@ -6,6 +6,7 @@
     
     function read($conexion){ // Función para leer los valores a la base de datos 
 
+
         if(true){
             $sql = "SELECT *  FROM empleados";
         }
@@ -23,13 +24,21 @@
 
         header('Content-Type: application/json');
         echo json_encode($empleados);
-     }
+    }
+     
     
     function create($conexion) { // Función para insertar nuevos valores a la base de datos 
 
-        if (isset($_POST['clave_empleado']) && isset($_POST['nombre_emp']) && isset($_POST['a_paterno']) 
-            && isset($_POST['a_materno']) && isset($_POST['id_puesto']) && isset($_POST['fecha_ingreso']) 
-            && isset($_POST['fecha_baja']) && isset($_POST['status'])) {
+        if (
+            isset($_POST['clave_empleado']) && 
+            isset($_POST['nombre_emp']) && 
+            isset($_POST['a_paterno']) && 
+            isset($_POST['a_materno']) && 
+            isset($_POST['id_puesto']) && 
+            isset($_POST['fecha_ingreso']) && 
+            isset($_POST['fecha_baja']) && 
+            isset($_POST['status']) 
+            )  {
     
             // Recuperar los valores del formulario
             $claveEmpleado = $_POST['clave_empleado'];
@@ -47,9 +56,9 @@
             $resultado = $conexion->query($sql);
     
             if ($resultado) {
-                echo "Consulta exitosa.";
+                echo "Nuevo Registro Insertado";
             } else {
-                echo "Consulta fallida: " . $conexion->error;
+                echo "Registro NO Insertado: " . $conexion->error;
             }
         }
     }
@@ -84,9 +93,9 @@
             $resultado = $conexion->query($sql);
     
             if ($resultado) {
-                echo "Registro eliminar correctamente.";
+                echo "Registro actualizado correctamente.";
             } else {
-                echo "Error al elminar: " . $conexion->error;
+                echo "Error al actuailzar: " . $conexion->error;
             }
         }
     }
@@ -102,18 +111,28 @@
                  $resultado = $conexion->query($sql);
 
                  if ($resultado) {
-                     echo "Registro actualizado correctamente.";
+                     echo "Registro eliminado correctamente.";
                  } else {
-                     echo "Error al actualizar: " . $conexion->error;
+                     echo "Error al eliminar: " . $conexion->error;
                  }
          
         }
        
      }
 
-    //update($conexion);
-    delete($conexion);
-    read($conexion);
-    //create($conexion);
+
+
+     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['guardar'])) {
+            create($conexion);
+        } elseif (isset($_POST['actualizar'])) {
+            update($conexion);
+        } elseif (isset($_POST['eliminar'])) {
+            delete($conexion);
+        }
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        read($conexion);
+    }
+
 ?>
     
