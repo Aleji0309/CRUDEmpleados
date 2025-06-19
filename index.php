@@ -8,7 +8,14 @@
 </head>
 <body>
 
-    <h1>CRUD de Empleados</h1>
+    <header class="header-empleados" >
+        <a class="a-empleados" href="#">Lista de Empleados</a>
+        <a class="a-empleados" href="#">Agregar Empleados</a>
+    </header>
+
+    <main class="main-container">
+        <h1>Lista de Empleados</h1>
+    </main>
 
     <div id="resultado"></div>
 

@@ -2,7 +2,9 @@
     --black-primary: #000000;
     --white-primary: #ffffff;
     --grey: #767676;
-  
+    --green-dark: #006400;
+    --red-dark: #cb3234; 
+    --blue-dark: #2414b3;
     --family-monserrat: [Montserrat](https://fonts.google.com/specimen/Montserrat);
     --family-fraunces: [Fraunces](https://fonts.google.com/specimen/Fraunces);
   }
@@ -80,4 +82,23 @@ body {
 table {
     height: 80vh;
     font-size: 2.3rem;
+}
+
+.header-empleados {
+  display: flex;
+  justify-content:flex-start;
+  gap: 4rem;
+  background-color: var(--green-dark);
+  width: 100%;
+  padding: 1.5rem;
+}
+
+.a-empleados {
+  text-decoration: none;
+  font-size: 3rem;
+  color: var(--white-primary);
+}
+
+.main-container {
+  background-color:#2414b3;
 }
