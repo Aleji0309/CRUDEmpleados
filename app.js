@@ -2,7 +2,6 @@
 const modal = document.getElementById("miModal");
 const cerrarModal = document.getElementById("cerrarModal");
 
-const btnMostrar = document.getElementById("btn-mostrar");
 const btnMostrarFormulario = document.getElementById("btn-agregar");
 const btnActualizarFormulario = document.getElementById("btn-actualizar");
 const btnEliminarFormulario = document.getElementById("btn-eliminar");
@@ -21,23 +20,20 @@ const textoModal = document.getElementById("texto-modal");
 const btnCerrarModal = document.getElementById("btn-cerrar-modal");
 
 // Mostrar empleados
-btnMostrar.addEventListener("click", () => {
+function mostrarElementos () {
   fetch("script.php")
     .then((resultado) => resultado.json())
     .then((data) => {
       let contenido = `
-        <table border="2">
+        <table>
           <thead>
             <tr>
               <th>ID Empleado</th>
               <th>Clave Empleado</th>
-              <th>Nombre</th>
-              <th>Apellido Paterno</th>
-              <th>Apellido Materno</th>
-              <th>ID Puesto</th>
-              <th>Fecha Ingreso</th>
-              <th>Fecha Baja</th>
-              <th>Status</th>
+              <th>Empleado</th>
+              <th>Puesto</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -48,13 +44,12 @@ btnMostrar.addEventListener("click", () => {
           <tr>
             <td>${element.id_empleado}</td>
             <td>${element.clave_empleado}</td>
-            <td>${element.nombre_emp}</td>
-            <td>${element.a_paterno}</td>
-            <td>${element.a_materno}</td>
-            <td>${element.id_puesto}</td>
-            <td>${element.fecha_ingreso}</td>
-            <td>${element.fecha_baja}</td>
+            <td>${element.nombre_completo}</td>
+            <td>${element.nombre_puesto}</td>
             <td>${element.status}</td>
+            <td> <a>TEST</a> 
+                 <a>TEST</a> 
+            </td>
           </tr>
         `;
       });
@@ -62,7 +57,10 @@ btnMostrar.addEventListener("click", () => {
       contenido += `</tbody></table>`;
       divMostrar.innerHTML = contenido;
     });
-});
+};
+
+// LLamado de funciones
+mostrarElementos();
 
 // Mostrar formulario para agregar
 btnMostrarFormulario.addEventListener("click", () => {

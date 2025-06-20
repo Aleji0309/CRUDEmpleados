@@ -2,7 +2,14 @@
 include 'db.php';    
 
 function read($conexion) {
-    $sql = "SELECT * FROM empleados";
+    $sql = "SELECT  
+                id_empleado, 
+                clave_empleado,
+                puestos.nombre_puesto,
+                status,
+                CONCAT (nombre_emp, a_paterno, a_materno) AS nombre_completo 
+            FROM empleados
+            JOIN puestos ON empleados.id_puesto = puestos.id_puesto";
     $resultado = $conexion->query($sql);
 
     $empleados = [];

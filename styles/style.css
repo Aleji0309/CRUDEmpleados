@@ -100,5 +100,10 @@ table {
 }
 
 .main-container {
-  background-color:#2414b3;
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.tabla-contenido {
+  background-color: grey;
 }

@@ -15,13 +15,13 @@
 
     <main class="main-container">
         <h1>Lista de Empleados</h1>
+        <div class="tabla-contenido"  id="resultado"></div>
+
     </main>
 
-    <div id="resultado"></div>
 
     <!-- Botones para cada acción -->
     <div class="contenedor-botones">
-        <button id="btn-mostrar">Mostrar Empleados</button>
         <button id="btn-agregar">Agregar Empleado</button>
         <button id="btn-actualizar">Actualizar Empleado</button>
         <button id="btn-eliminar">Eliminar Empleado</button>
@@ -64,8 +64,11 @@
                         <label for="fecha_baja">Fecha Baja</label>
                         <input type="date" name="fecha_baja" required><br>
 
-                        <label for="status">Status</label>
-                        <input type="number" name="status" required min="0" max="1"><br>
+                        <label for="status">Estado</label>
+                        <select name="status" id="status" required>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                        </select>
                     </div>
 
                     <!-- Botones de acción -->

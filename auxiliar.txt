@@ -1,0 +1,15 @@
+            <td>${element.id_puesto}</td>
+            <td>${element.fecha_ingreso}</td>
+            <td>${element.fecha_baja}</td>
+            <td>${element.status}</td>
+
+
+            HTML contenedor
+
+              <th>ID Puesto</th>
+              <th>Fecha Ingreso</th>
+              <th>Fecha Baja</th>
+              <th>Status</th>
+
+
+              
