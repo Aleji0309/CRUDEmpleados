@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>CRUD Empleados</title>
 </head>
 <body>
@@ -14,9 +15,7 @@
     </header>
 
     <main class="main-container">
-        <h1>Lista de Empleados</h1>
         <div class="tabla-contenido"  id="resultado"></div>
-
     </main>
 
 

@@ -3,8 +3,9 @@
     --white-primary: #ffffff;
     --grey: #767676;
     --green-dark: #006400;
+    --gree-light: #90ee90;
     --red-dark: #cb3234; 
-    --blue-dark: #2414b3;
+    --blue-dark: #000080;
     --family-monserrat: [Montserrat](https://fonts.google.com/specimen/Montserrat);
     --family-fraunces: [Fraunces](https://fonts.google.com/specimen/Fraunces);
   }
@@ -52,6 +53,27 @@ body {
     max-width: 500px;
     font-size: 2rem;
   }
+
+.header-empleados {
+  display: flex;
+  justify-content:flex-start;
+  gap: 4rem;
+  background-color: var(--green-dark);
+  width: 100%;
+  padding: 2.5rem;  
+}
+
+.a-empleados {
+  text-decoration: none;
+  font-size: 3rem;
+  color: var(--white-primary);
+  margin-left: 3rem;
+  height: 100%;
+}
+
+.a-empleados:hover {
+  background-color: var(--gree-light);
+}
   
   .cerrar {
     color: #aaa;
@@ -80,30 +102,39 @@ body {
 }
 
 table {
-    height: 80vh;
     font-size: 2.3rem;
-}
+    width: 100%;
+    table-layout: fixed;
+      margin-top: 4rem;
 
-.header-empleados {
-  display: flex;
-  justify-content:flex-start;
-  gap: 4rem;
-  background-color: var(--green-dark);
-  width: 100%;
-  padding: 1.5rem;
-}
-
-.a-empleados {
-  text-decoration: none;
-  font-size: 3rem;
-  color: var(--white-primary);
-}
-
-.main-container {
-  width: 1400px;
-  margin: 0 auto;
 }
 
 .tabla-contenido {
-  background-color: grey;
+  text-align: center;
+}
+
+.tabla-contenido td {
+  padding: 3rem 0;
+}
+
+
+.main-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.btn-modify-update,
+.btn-modify-delete {
+  border: none;
+  background-color: var(--white-primary);
+  cursor: pointer;
+}
+
+.btn-modify-update {
+  color: var(--blue-dark);
+}
+
+.btn-modify-delete {
+  color: var(--red-dark);
 }

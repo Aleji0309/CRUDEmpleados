@@ -47,8 +47,10 @@ function mostrarElementos () {
             <td>${element.nombre_completo}</td>
             <td>${element.nombre_puesto}</td>
             <td>${element.status}</td>
-            <td> <a>TEST</a> 
-                 <a>TEST</a> 
+            <td> 
+            <button class="btn-modify-update" ><i class="fa-solid fa-user-pen"></i></button> 
+            <button class="btn-modify-delete" ><i class="fas fa-trash"></i></button> 
+                   
             </td>
           </tr>
         `;
